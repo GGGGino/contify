@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Contify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web app usata per dividere alla romana il conto.
+
+Per scannerizzare il codice usare https://github.com/nimiq/qr-scanner
 
 ## Available Scripts
 
