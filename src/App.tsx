@@ -1,15 +1,12 @@
 import React from "react";
 import QRCode from "react-qr-code";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-
+import Home from "./Home";
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AdminPage from "./AdminPage";
+import UserPage from "./UserPage";
 
 const myInfo: any = {
   name: 'Gino',
@@ -18,60 +15,35 @@ const myInfo: any = {
 
 export default function App() {
   reportWebVitals(console.log);
-  const commonStyle: any = {
-    width: '80%',
-    height: '300px',
-    borderRadius: '21px 21px 0 0',
-  };
 
   return (
     <Router>
       <>
         <main>
-          <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div className="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-              <div className="my-3 py-3">
-                <h2 className="display-5">Another headline</h2>
-                <p className="lead">And an even wittier subheading.</p>
-                <Link className="btn btn-outline-secondary" to="/">Home</Link>
-              </div>
-            </div>
-            <div className="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-              <div className="my-3 p-3">
-                <h2 className="display-5">Another headline</h2>
-                <p className="lead">And an even wittier subheading.</p>
-                <Link to="/generate-code">Generate code</Link>
-              </div>
-            </div>
-            <div className="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-              <div className="my-3 p-3">
-                <h2 className="display-5">Another headline</h2>
-                <p className="lead">And an even wittier subheading.</p>
-                <Link to="/capture">Capture</Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-            <Switch>
-              <Route path="/generate-code">
-                <GenerateCode />
-              </Route>
-              <Route path="/capture">
-                <Capture />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/generate-code">
+              <GenerateCode />
+            </Route>
+            <Route path="/capture">
+              <Capture />
+            </Route>
+            <Route path="/user-page">
+              <UserPage />
+            </Route>
+            <Route path="/admin-page">
+              <AdminPage />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
         </main>
 
         <footer className="container py-5">
           <div className="row">
             <div className="col-12 col-md">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                   stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="d-block mb-2" role="img"
+                   strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="d-block mb-2" role="img"
                    viewBox="0 0 24 24"><title>Product</title>
                 <circle cx="12" cy="12" r="10"></circle>
                 <path
@@ -84,32 +56,6 @@ export default function App() {
       </>
     </Router>
   );
-}
-
-function Home() {
-  const handleInputChange = (event: any) => {
-    const target = event.target;
-    const name = target.name;
-
-    myInfo[name] = target.value;
-  };
-
-  return <form>
-    <label>
-      Nome:
-      <input
-        name="name"
-        type="text"
-        onChange={handleInputChange} />
-    </label>
-    <label>
-      Massimo che metto:
-      <input
-        name="maxImporto"
-        type="number"
-        onChange={handleInputChange} />
-    </label>
-  </form>;
 }
 
 function GenerateCode() {
