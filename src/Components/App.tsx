@@ -1,7 +1,7 @@
 import React from "react";
 import QRCode from "react-qr-code";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
+import reportWebVitals from "../reportWebVitals";
 import Home from "./Home";
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';

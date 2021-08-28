@@ -1,6 +1,7 @@
 import React from "react";
-import InnerHeader from "./InnerHeader";
 import {Container, Row, Col} from "react-bootstrap";
+import InnerHeader from "./InnerHeader";
+import {Html5QrcodeScannerPlugin} from "./Html5QrcodeScannerPlugin";
 
 export default function AdminPage() {
   return <div>
