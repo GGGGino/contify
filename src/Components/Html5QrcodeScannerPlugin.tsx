@@ -1,5 +1,5 @@
 import * as React from "react";
-import Html5QrcodeScanner from 'html5-qrcode';
+import {Html5Qrcode, Html5QrcodeScanner, CameraDevice} from 'html5-qrcode';
 
 interface MyProps {
   fps: any;
@@ -40,13 +40,6 @@ export class Html5QrcodeScannerPlugin extends React.Component<MyProps> {
     if (!(this.props.qrCodeSuccessCallback )) {
       throw 'qrCodeSuccessCallback is required callback.';
     }
-
-    this.html5QrcodeScanner = new Html5QrcodeScanner('qr-code-full-region', config, verbose);
-
-    if (!this.html5QrcodeScanner) { return; }
-
-    this.html5QrcodeScanner.render(
-      this.props.qrCodeSuccessCallback, this.props.qrCodeErrorCallback);
   }
 
   componentWillUnmount() {
