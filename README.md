@@ -17,6 +17,8 @@ Per scannerizzare il codice usare https://github.com/nimiq/qr-scanner
 
 - 
 
+https://github.com/nimiq/qr-scanner
+
 ## Available Scripts
 
 In the project directory, you can run:

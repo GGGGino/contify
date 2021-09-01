@@ -13,9 +13,11 @@ export class QrcodeScannerPlugin extends React.Component<QrcodeScannerProps> {
       const videoElem = document.getElementById('qr-video') as HTMLVideoElement;
 
       this.qrScanner = new QrScanner(videoElem, (result: string) => {
+        alert(result);
         this.props.onQrcodeScanned(result);
-        // this.qrScanner!.stop();
       });
+
+      videoElem.parentNode!.appendChild(((this.qrScanner as any).$canvas) as Node);
 
       this.qrScanner.start();
     }, 200);
@@ -23,6 +25,8 @@ export class QrcodeScannerPlugin extends React.Component<QrcodeScannerProps> {
 
   componentWillUnmount() {
     if (!this.qrScanner) { return; }
+
+    console.log('unoount');
 
     this.qrScanner.destroy();
   }
