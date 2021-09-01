@@ -22,7 +22,7 @@ export default function AdminPage() {
         <Col sm={4}>
           <h3>Capture</h3>
           <div>
-            <QrcodeScannerPlugin onQrcodeScanned={onQrcodeScanned}/>
+            <QrcodeScannerPlugin onQrcodeScanned={onQrcodeScanned} />
           </div>
         </Col>
         <Col sm={8}>
