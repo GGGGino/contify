@@ -7,7 +7,7 @@ export default function UserPage() {
   const [myInfoScope, setInfo]: [any, any] = useState({
     name: 'Gino',
     alreadyPutted: 0,
-    maxToPut: 0
+    maxToPut: null
   });
   const [showModal, setShowModal] = useState(false);
 
@@ -58,11 +58,6 @@ export default function UserPage() {
               Generate
             </Button>
           </Form>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div>{JSON.stringify(myInfoScope)}</div>
         </Col>
       </Row>
     </Container>
