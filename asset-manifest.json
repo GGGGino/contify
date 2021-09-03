@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/contify/static/css/main.c0c3c629.chunk.css",
-    "main.js": "/contify/static/js/main.627922b1.chunk.js",
-    "main.js.map": "/contify/static/js/main.627922b1.chunk.js.map",
+    "main.js": "/contify/static/js/main.7245f2ea.chunk.js",
+    "main.js.map": "/contify/static/js/main.7245f2ea.chunk.js.map",
     "runtime-main.js": "/contify/static/js/runtime-main.4f99d373.js",
     "runtime-main.js.map": "/contify/static/js/runtime-main.4f99d373.js.map",
     "static/css/2.c490997a.chunk.css": "/contify/static/css/2.c490997a.chunk.css",
-    "static/js/2.c06f70da.chunk.js": "/contify/static/js/2.c06f70da.chunk.js",
-    "static/js/2.c06f70da.chunk.js.map": "/contify/static/js/2.c06f70da.chunk.js.map",
+    "static/js/2.8b8ab4d1.chunk.js": "/contify/static/js/2.8b8ab4d1.chunk.js",
+    "static/js/2.8b8ab4d1.chunk.js.map": "/contify/static/js/2.8b8ab4d1.chunk.js.map",
     "static/js/3.4529eea3.chunk.js": "/contify/static/js/3.4529eea3.chunk.js",
     "static/js/3.4529eea3.chunk.js.map": "/contify/static/js/3.4529eea3.chunk.js.map",
     "index.html": "/contify/index.html",
     "static/css/2.c490997a.chunk.css.map": "/contify/static/css/2.c490997a.chunk.css.map",
     "static/css/main.c0c3c629.chunk.css.map": "/contify/static/css/main.c0c3c629.chunk.css.map",
-    "static/js/2.c06f70da.chunk.js.LICENSE.txt": "/contify/static/js/2.c06f70da.chunk.js.LICENSE.txt"
+    "static/js/2.8b8ab4d1.chunk.js.LICENSE.txt": "/contify/static/js/2.8b8ab4d1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4f99d373.js",
     "static/css/2.c490997a.chunk.css",
-    "static/js/2.c06f70da.chunk.js",
+    "static/js/2.8b8ab4d1.chunk.js",
     "static/css/main.c0c3c629.chunk.css",
-    "static/js/main.627922b1.chunk.js"
+    "static/js/main.7245f2ea.chunk.js"
   ]
 }
