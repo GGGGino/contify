@@ -22,6 +22,13 @@ export default function UserPage() {
     setInfo({...myInfoScope, [name]: target.value});
   };
 
+  const handleNumberChange = (event: any) => {
+    const target = event.target;
+    const name = target.id;
+
+    setInfo({...myInfoScope, [name]: Math.trunc(parseFloat(target.value) * 100)});
+  };
+
   const handleGenerate = (event: any) => {
     setShowModal(true);
   };
@@ -46,12 +53,12 @@ export default function UserPage() {
 
             <Form.Group className="mb-3" controlId="alreadyPutted">
               <Form.Label>Already putted</Form.Label>
-              <Form.Control type="number" placeholder="0" onChange={handleInputChange}/>
+              <Form.Control type="number" placeholder="0" onChange={handleNumberChange}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="maxToPut">
               <Form.Label>Max import</Form.Label>
-              <Form.Control type="number" placeholder="0" onChange={handleInputChange}/>
+              <Form.Control type="number" placeholder="0" onChange={handleNumberChange}/>
             </Form.Group>
 
             <Button variant="primary" onClick={handleGenerate}>

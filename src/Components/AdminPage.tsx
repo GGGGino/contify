@@ -1,10 +1,13 @@
 import React, {useState} from "react";
-import {Button, Card, Col, Container, ListGroup, ListGroupItem, Modal, Row, Table} from "react-bootstrap";
+import {Button, Card, Col, Container, ListGroup, ListGroupItem, Modal, Row} from "react-bootstrap";
 import InnerHeader from "./InnerHeader";
 import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
+import {UserConfiguration} from "../interfaces/UserConfiguration";
+import calculate from "../utils/calculate";
 
 export default function AdminPage() {
-  const [qrcodes, setQrcodes] = useState<Array<string>>([]);
+  const [originaUsers, setOriginalUsers] = useState<Array<UserConfiguration>>([]);
+  const [users, setUsers] = useState<Array<UserConfiguration>>([]);
   const [showModal, setShowModal] = useState(false);
   const [slaveToEdit, setSlaveToEdit] = useState<number|null>(null);
 
@@ -18,43 +21,55 @@ export default function AdminPage() {
   };
 
   const removeSlave = (indexToRemove: number) => {
-    qrcodes.splice(indexToRemove, 1);
-    setQrcodes([...qrcodes]);
+    originaUsers.splice(indexToRemove, 1);
+    setUsers([...originaUsers]);
+    setOriginalUsers([...originaUsers]);
   };
 
   const handleClose = () => {
     setShowModal(false);
   };
 
-  const calculate = () => {
-    setShowModal(false);
+  const doCalculaton = () => {
+    const newUsersConf: UserConfiguration[] = calculate(users);
+
+    setUsers(newUsersConf);
   };
 
   const eraseSlaves = () => {
-    setQrcodes([]);
+    setUsers([]);
+    setOriginalUsers([]);
   };
 
   const onQrcodeScanned = (qrCodeScanned: string) => {
     handleClose();
-    console.log(slaveToEdit);
+
+    const jsonDecoded: UserConfiguration = JSON.parse(atob(qrCodeScanned));
 
     if (slaveToEdit !== null) {
-      qrcodes[slaveToEdit] = qrCodeScanned;
+      originaUsers[slaveToEdit] = jsonDecoded;
     } else {
-      qrcodes.push(qrCodeScanned);
+      originaUsers.push(jsonDecoded);
     }
-    setQrcodes([...qrcodes]);
+    setUsers([...originaUsers]);
+    setOriginalUsers([...originaUsers]);
+    setSlaveToEdit(null);
   };
 
-  const codesDoms = qrcodes.map((qrCode, index) => {
-    const jsonDecoded: any = JSON.parse(atob(qrCode));
-    const alreadyPutted = jsonDecoded.alreadyPutted === null ? '-' : jsonDecoded.alreadyPutted;
-    const maxToPut = jsonDecoded.maxToPut === null ? '-' : jsonDecoded.maxToPut;
+  const codesDoms = users.map((user, index) => {
+    const alreadyPutted = user.alreadyPutted === null ? '-' : user.alreadyPutted / 100;
+    const maxToPut = user.maxToPut === null ? '-' : (user.maxToPut / 100).toFixed(2);
+    const toPutDom = user.toPut
+      ? user.toPut > 0
+        ? <span className="text-danger">{(user.toPut / 100).toFixed(2)}</span>
+        : <span className="text-success">{(user.toPut / 100).toFixed(2)}</span>
+      : null;
 
     return (<Col key={index} className="py-3" xs={12} md={4}>
       <Card>
-        <Card.Header>
-          <Card.Title>{jsonDecoded.name}</Card.Title>
+        <Card.Header className={"card-header d-flex justify-content-between align-items-center"}>
+          <Card.Title>{user.name}</Card.Title>
+          <Card.Title >{toPutDom}</Card.Title>
         </Card.Header>
         <ListGroup className="list-group-flush">
           <ListGroupItem>Already putted: <strong>{alreadyPutted}</strong> €</ListGroupItem>
@@ -82,7 +97,7 @@ export default function AdminPage() {
       </Row>
       <Row>
         <Col sm={12}>
-          <Button variant="success" onClick={calculate}>Calculate</Button>
+          <Button variant="success" onClick={doCalculaton}>Calculate</Button>
         </Col>
       </Row>
     </Container>

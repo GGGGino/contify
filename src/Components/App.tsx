@@ -14,8 +14,6 @@ const myInfo: any = {
 };
 
 export default function App() {
-  reportWebVitals(console.log);
-
   return (
     <Router>
       <>

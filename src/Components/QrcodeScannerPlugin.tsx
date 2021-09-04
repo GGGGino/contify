@@ -1,5 +1,6 @@
 import * as React from "react";
 import QrScanner from 'qr-scanner';
+QrScanner.WORKER_PATH = process.env.REACT_APP_BASE_FOLDER + '/qr-scanner-worker.min.js';
 
 interface QrcodeScannerProps {
   onQrcodeScanned: (qrCodeScanned: string) => any;
