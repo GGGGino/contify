@@ -61,8 +61,8 @@ export default function AdminPage() {
     const maxToPut = user.maxToPut === null ? '-' : (user.maxToPut / 100).toFixed(2);
     const toPutDom = user.toPut
       ? user.toPut > 0
-        ? <span className="text-danger">{(user.toPut / 100).toFixed(2)}</span>
-        : <span className="text-success">{(user.toPut / 100).toFixed(2)}</span>
+        ? <span className="text-danger">{(user.toPut / 100).toFixed(2)} €</span>
+        : <span className="text-success">{(user.toPut / 100).toFixed(2)} €</span>
       : null;
 
     return (<Col key={index} className="py-3" xs={12} md={4}>

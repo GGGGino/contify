@@ -29,8 +29,6 @@ export class QrcodeScannerPlugin extends React.Component<QrcodeScannerProps> {
   componentWillUnmount() {
     if (!this.qrScanner) { return; }
 
-    console.log('unoount');
-
     this.qrScanner.destroy();
   }
 

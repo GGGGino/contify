@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import InnerHeader from "./InnerHeader";
 import {Button, Col, Container, Form, Modal, Row} from "react-bootstrap";
 import QRCode from "react-qr-code";
+import {UserConfiguration} from "../interfaces/UserConfiguration";
 
 export default function UserPage() {
-  const [myInfoScope, setInfo]: [any, any] = useState({
+  const [myInfoScope, setInfo]: [any, any] = useState<UserConfiguration>({
     name: 'Gino',
     alreadyPutted: 0,
     maxToPut: null
@@ -73,7 +74,10 @@ export default function UserPage() {
       <Modal.Header closeButton>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{qrCodeDOM}</Modal.Body>
+      <Modal.Body>
+        {qrCodeDOM}
+        {}
+      </Modal.Body>
     </Modal>
   </div>;
 }
