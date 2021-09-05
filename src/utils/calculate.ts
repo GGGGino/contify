@@ -1,21 +1,48 @@
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 
+function addToPut(userConf: UserConfiguration, toPut: number) {
+  if (!userConf.toPut) { userConf.toPut = 0; }
+
+  userConf.toPut += toPut;
+}
+
 export default function calculate(usersConfiguration: UserConfiguration[]) {
-  const total = usersConfiguration.reduce((acc, curr) => {
-    const maxToPut = curr.maxToPut !== null ? curr.maxToPut : 0;
-    return acc += (curr.alreadyPutted - maxToPut)
-  }, 0);
-  const userWithoutMaximport = usersConfiguration.reduce(
-    (acc, curr) => curr.maxToPut !== null ? acc : acc += 1, 0
-  );
-  const average = total / userWithoutMaximport;
-  const newUserConf: UserConfiguration[] = [];
+  const newUserConf: UserConfiguration[] = [...usersConfiguration];
+  newUserConf.map((userConf) => {
+    userConf.toPut = 0;
+    return userConf;
+  });
+  let total = usersConfiguration.reduce((acc, curr) => acc += curr.alreadyPutted, 0);
 
-  for (const userConf of usersConfiguration) {
-    const userConfCopy = {...userConf};
+  while (total > 1) {
+    const average = total / newUserConf.length;
+    for (const key in newUserConf) {
+      const userConfCopy = {...newUserConf[key]};
 
-    userConfCopy.toPut = userConfCopy.maxToPut ? userConfCopy.maxToPut - userConfCopy.alreadyPutted : average - userConfCopy.alreadyPutted;
-    newUserConf.push(userConfCopy);
+      if (userConfCopy.maxToPut && userConfCopy.toPut! >= userConfCopy.maxToPut) {
+        continue;
+      }
+
+      if (userConfCopy.maxToPut) {
+        const diffBetweenAvgAndMax = (userConfCopy.toPut! + average) - userConfCopy.maxToPut;
+
+        if (userConfCopy.maxToPut < average) {
+          addToPut(userConfCopy, userConfCopy.maxToPut);
+          total -= userConfCopy.maxToPut;
+        } else if (diffBetweenAvgAndMax > 0) {
+          addToPut(userConfCopy, userConfCopy.maxToPut - userConfCopy.toPut!);
+          total -= (userConfCopy.maxToPut - userConfCopy.toPut!);
+        } else {
+          addToPut(userConfCopy, average);
+          total -= average;
+        }
+      } else {
+        addToPut(userConfCopy, average);
+        total -= average;
+      }
+
+      newUserConf[key] = userConfCopy;
+    }
   }
 
   return newUserConf;

@@ -72,7 +72,7 @@ export default function UserPage() {
 
     <Modal show={showModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>QRCode Generated</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {qrCodeDOM}

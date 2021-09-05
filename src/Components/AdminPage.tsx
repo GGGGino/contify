@@ -5,9 +5,23 @@ import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import calculate from "../utils/calculate";
 
+const testInitialUserConfiguration: UserConfiguration[] = [{
+  name: 'P',
+  alreadyPutted: 3000,
+  maxToPut: null
+}, {
+  name: 'G',
+  alreadyPutted: 1000,
+  maxToPut: 1500
+}, {
+  name: 'L',
+  alreadyPutted: 2000,
+  maxToPut: 500
+}];
+
 export default function AdminPage() {
-  const [originaUsers, setOriginalUsers] = useState<Array<UserConfiguration>>([]);
-  const [users, setUsers] = useState<Array<UserConfiguration>>([]);
+  const [originaUsers, setOriginalUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
+  const [users, setUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
   const [showModal, setShowModal] = useState(false);
   const [slaveToEdit, setSlaveToEdit] = useState<number|null>(null);
 
@@ -32,6 +46,8 @@ export default function AdminPage() {
 
   const doCalculaton = () => {
     const newUsersConf: UserConfiguration[] = calculate(users);
+
+    console.log(newUsersConf);
 
     setUsers(newUsersConf);
   };
@@ -59,10 +75,11 @@ export default function AdminPage() {
   const codesDoms = users.map((user, index) => {
     const alreadyPutted = user.alreadyPutted === null ? '-' : user.alreadyPutted / 100;
     const maxToPut = user.maxToPut === null ? '-' : (user.maxToPut / 100).toFixed(2);
+    const diffToPut = user.alreadyPutted - user.toPut!;
     const toPutDom = user.toPut
-      ? user.toPut > 0
-        ? <span className="text-danger">{(user.toPut / 100).toFixed(2)} €</span>
-        : <span className="text-success">{(user.toPut / 100).toFixed(2)} €</span>
+      ? diffToPut > 0
+        ? <span className="text-danger">{(diffToPut / 100).toFixed(2)} €</span>
+        : <span className="text-success">{(diffToPut / 100).toFixed(2)} €</span>
       : null;
 
     return (<Col key={index} className="py-3" xs={12} md={4}>
@@ -104,7 +121,7 @@ export default function AdminPage() {
 
     <Modal show={showModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Scan code</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <QrcodeScannerPlugin onQrcodeScanned={onQrcodeScanned} />
