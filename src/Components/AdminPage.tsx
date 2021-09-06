@@ -93,8 +93,8 @@ export default function AdminPage() {
           <ListGroupItem>Max: <strong>{maxToPut}</strong> €</ListGroupItem>
         </ListGroup>
         <Card.Body>
-          <Button variant="secondary" onClick={() => openModalEditSlave(index)}>Change</Button>
-          <Button variant="danger" onClick={() => removeSlave(index)}>Remove</Button>
+          <Button variant="secondary" size={'sm'} onClick={() => openModalEditSlave(index)}>Change</Button>
+          <Button variant="danger" size={'sm'} onClick={() => removeSlave(index)}>Remove</Button>
         </Card.Body>
       </Card>
     </Col>);
@@ -105,8 +105,8 @@ export default function AdminPage() {
     <Container className="py-3">
       <Row>
         <Col sm={12}>
-          <Button variant="primary" onClick={openModalAddSlave}>Add slave</Button>
-          <Button variant="danger" onClick={eraseSlaves}>Erase</Button>
+          <Button variant="primary" size={'sm'} className={'mr-1'} onClick={openModalAddSlave}>Add slave</Button>
+          <Button variant="danger" size={'sm'} onClick={eraseSlaves}>Erase</Button>
           <Row className="py-3">
             {codesDoms}
           </Row>

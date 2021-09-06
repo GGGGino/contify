@@ -12,7 +12,7 @@ export default function calculate(usersConfiguration: UserConfiguration[]) {
     userConf.toPut = 0;
     return userConf;
   });
-  let total = usersConfiguration.reduce((acc, curr) => acc += curr.alreadyPutted, 0);
+  let total = usersConfiguration.reduce((acc, curr) => acc += curr.alreadyPutted, 0) + 0.7;
 
   while (total > 1) {
     const average = total / newUserConf.length;
