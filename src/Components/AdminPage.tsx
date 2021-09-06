@@ -47,8 +47,6 @@ export default function AdminPage() {
   const doCalculaton = () => {
     const newUsersConf: UserConfiguration[] = calculate(users);
 
-    console.log(newUsersConf);
-
     setUsers(newUsersConf);
   };
 
@@ -78,8 +76,8 @@ export default function AdminPage() {
     const diffToPut = user.alreadyPutted - user.toPut!;
     const toPutDom = user.toPut
       ? diffToPut > 0
-        ? <span className="text-danger">{(diffToPut / 100).toFixed(2)} €</span>
-        : <span className="text-success">{(diffToPut / 100).toFixed(2)} €</span>
+        ? <span className="text-danger">{((diffToPut / 100)*-1).toFixed(2)} €</span>
+        : <span className="text-success">{((diffToPut / 100)*-1).toFixed(2)} €</span>
       : null;
 
     return (<Col key={index} className="py-3" xs={12} md={4}>
@@ -100,13 +98,22 @@ export default function AdminPage() {
     </Col>);
   });
 
+  codesDoms.push(<Col key={'extra'} className="py-3" xs={12} md={4}>
+    <Card>
+      <Card.Header className={"card-header d-flex justify-content-between align-items-center"}>
+        <Card.Title>{'Aggiungi utente'}</Card.Title>
+      </Card.Header>
+      <Card.Body>
+        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}>Aggiungi</Button>
+      </Card.Body>
+    </Card>
+  </Col>);
+
   return <div>
     <InnerHeader/>
     <Container className="py-3">
       <Row>
         <Col sm={12}>
-          <Button variant="primary" size={'sm'} className={'mr-1'} onClick={openModalAddSlave}>Add slave</Button>
-          <Button variant="danger" size={'sm'} onClick={eraseSlaves}>Erase</Button>
           <Row className="py-3">
             {codesDoms}
           </Row>
@@ -114,7 +121,8 @@ export default function AdminPage() {
       </Row>
       <Row>
         <Col sm={12}>
-          <Button variant="success" onClick={doCalculaton}>Calculate</Button>
+          <Button variant="success" size={'sm'} onClick={doCalculaton}>Calculate</Button>
+          <Button variant="danger" size={'sm'} onClick={eraseSlaves}>Erase</Button>
         </Col>
       </Row>
     </Container>
