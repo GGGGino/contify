@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import { useTranslation, Trans } from 'react-i18next';
 import {Col, Container, Row} from "react-bootstrap";
+import Typist from 'react-typist';
 
 export default function Home() {
   const [index, setIndex] = useState<number>(0);

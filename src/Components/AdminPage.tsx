@@ -5,19 +5,7 @@ import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import calculate from "../utils/calculate";
 
-const testInitialUserConfiguration: UserConfiguration[] = [{
-  name: 'P',
-  alreadyPutted: 3000,
-  maxToPut: null
-}, {
-  name: 'G',
-  alreadyPutted: 1000,
-  maxToPut: 1500
-}, {
-  name: 'L',
-  alreadyPutted: 2000,
-  maxToPut: 500
-}];
+const testInitialUserConfiguration: UserConfiguration[] = [];
 
 export default function AdminPage() {
   const [originaUsers, setOriginalUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
