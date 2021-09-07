@@ -114,7 +114,7 @@ export default function AdminPage() {
     <Container className="py-3">
       <Row>
         <Col sm={12}>
-          <Row className="py-3">
+          <Row>
             {codesDoms}
           </Row>
         </Col>

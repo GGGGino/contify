@@ -45,5 +45,9 @@ export default function calculate(usersConfiguration: UserConfiguration[]) {
     }
   }
 
+  for (const key in newUserConf) {
+    newUserConf[key].toPut = Math.round(newUserConf[key].toPut!);
+  }
+
   return newUserConf;
 }
