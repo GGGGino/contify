@@ -1,5 +1,10 @@
 import calculate from './calculate';
+import {intToCurrString} from './currency';
+import {colorCardGenerator, getColorCard} from './cardColor';
 
 export default {
-  calculate
+  calculate,
+  intToCurrString,
+  colorCardGenerator,
+  getColorCard
 }

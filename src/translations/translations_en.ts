@@ -1,4 +1,4 @@
-export default {
+const translation = {
   translation: {
     Home: {
       "slogan": "Share with others the cost of your",
@@ -31,4 +31,6 @@ export default {
       "calculate": "Calculate",
     }
   }
-}
+};
+
+export default translation;

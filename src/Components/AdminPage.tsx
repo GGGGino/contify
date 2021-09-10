@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {Button, Card, Col, Container, ListGroup, ListGroupItem, Modal, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import InnerHeader from "./InnerHeader";
 import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
-import calculate from "../utils/calculate";
+import utils from '../utils';
+import CreditCard from "./CreditCard";
 
 const testInitialUserConfiguration: UserConfiguration[] = [];
 
@@ -12,6 +13,7 @@ export default function AdminPage() {
   const [users, setUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
   const [showModal, setShowModal] = useState(false);
   const [slaveToEdit, setSlaveToEdit] = useState<number|null>(null);
+  const colorGenerator = utils.colorCardGenerator();
 
   const openModalEditSlave = (indexToChange: number) => {
     setShowModal(true);
@@ -33,7 +35,7 @@ export default function AdminPage() {
   };
 
   const doCalculaton = () => {
-    const newUsersConf: UserConfiguration[] = calculate(users);
+    const newUsersConf: UserConfiguration[] = utils.calculate(users);
 
     setUsers(newUsersConf);
   };
@@ -58,31 +60,14 @@ export default function AdminPage() {
     setSlaveToEdit(null);
   };
 
-  const codesDoms = users.map((user, index) => {
-    const alreadyPutted = user.alreadyPutted === null ? '-' : user.alreadyPutted / 100;
-    const maxToPut = user.maxToPut === null ? '-' : (user.maxToPut / 100).toFixed(2);
-    const diffToPut = user.alreadyPutted - user.toPut!;
-    const toPutDom = user.toPut
-      ? diffToPut > 0
-        ? <span className="text-danger">{((diffToPut / 100)*-1).toFixed(2)} €</span>
-        : <span className="text-success">{((diffToPut / 100)*-1).toFixed(2)} €</span>
-      : null;
-
+  const codesDoms = users.map((user: UserConfiguration, index) => {
     return (<Col key={index} className="py-3" xs={12} md={4}>
-      <Card>
-        <Card.Header className={"card-header d-flex justify-content-between align-items-center"}>
-          <Card.Title>{user.name}</Card.Title>
-          <Card.Title >{toPutDom}</Card.Title>
-        </Card.Header>
-        <ListGroup className="list-group-flush">
-          <ListGroupItem>Already putted: <strong>{alreadyPutted}</strong> €</ListGroupItem>
-          <ListGroupItem>Max: <strong>{maxToPut}</strong> €</ListGroupItem>
-        </ListGroup>
-        <Card.Body>
-          <Button variant="secondary" size={'sm'} onClick={() => openModalEditSlave(index)}>Change</Button>
-          <Button variant="danger" size={'sm'} onClick={() => removeSlave(index)}>Remove</Button>
-        </Card.Body>
-      </Card>
+      <CreditCard
+        key={index}
+        config={user}
+        gradients={colorGenerator(index)}
+        onEdit={() => openModalEditSlave(index)}
+        onDelete={() => removeSlave(index)} />
     </Col>);
   });
 
@@ -92,7 +77,8 @@ export default function AdminPage() {
         <Card.Title>{'Aggiungi utente'}</Card.Title>
       </Card.Header>
       <Card.Body>
-        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}>Aggiungi</Button>
+        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-upc-scan" /> Add</Button>{' '}
+        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-input-cursor"/> Add</Button>
       </Card.Body>
     </Card>
   </Col>);

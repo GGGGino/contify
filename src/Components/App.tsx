@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./Home";
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import AdminPage from "./AdminPage";
 import UserPage from "./UserPage";
 
