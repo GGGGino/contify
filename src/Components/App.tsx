@@ -5,6 +5,8 @@ import Home from "./Home";
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import AdminPage from "./AdminPage";
 import UserPage from "./UserPage";
 
