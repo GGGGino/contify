@@ -4,13 +4,15 @@ import {Button} from "react-bootstrap";
 import utils from "../utils";
 
 import '../creditCard.css';
+import {number} from "prop-types";
 
 interface CreditCardProps {
-  config: UserConfiguration,
-  onEdit: () => any,
-  onDelete: () => any,
-  className?: string,
-  gradients?: string[]
+  config: UserConfiguration;
+  onEdit: () => any;
+  onDelete: () => any;
+  className?: string;
+  gradients?: string[];
+  nth: number;
 }
 
 export default function CreditCard(props: CreditCardProps) {
@@ -28,6 +30,11 @@ export default function CreditCard(props: CreditCardProps) {
   const cardPartStyle = {
     backgroundImage: `linear-gradient(to right bottom, ${gradients.join(', ')})`
   };
+  const numberPadded = (props.nth + 1)
+    .toString()
+    .padStart(16, '*')
+    .split( /([1-9A-Z*+]{4})/ )
+    .join(' ');
 
   return (
     <div className={realClass}>
@@ -40,8 +47,6 @@ export default function CreditCard(props: CreditCardProps) {
           <span className="card__label">Balance</span>
           <p className="card__info">{utils.intToCurrString(alreadyPutted)}</p>
         </div>
-        <p className="card_numer">**** **** **** 6258</p>
-
         <div className="card__space-60">
           <span className="card__label">Actions</span>
           <p className="card__info">
@@ -52,6 +57,7 @@ export default function CreditCard(props: CreditCardProps) {
         <div className="card__space-40">
           {toPutDom}
         </div>
+        <p className="card_numer">{numberPadded}</p>
       </div>
 
       <div className="card__back card__part" style={cardPartStyle}>

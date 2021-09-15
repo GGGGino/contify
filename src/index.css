@@ -19,3 +19,36 @@ code {
 video {
   max-width: 100%;
 }
+
+.navbar {
+  background-color: rgb(221, 211, 211);
+}
+
+.main-image {
+  background: url(./money.png) no-repeat center left rgb(221, 211, 211);
+  background-size: contain;
+}
+
+.organize-box {
+  background-color: #78c178;
+}
+.organize-box:hover {
+  background-color: #78d178;
+}
+
+.settings-box {
+  background-color: #d4b34a;
+}
+.settings-box:hover {
+  background-color: #d4c34a;
+}
+
+@media (max-width: 767px) {
+  .cards-container .credit-card+.credit-card:not(:last-child) {
+    margin-top: -105px;
+    transition: all .5s;
+  }
+  .cards-container .credit-card:hover + .credit-card {
+    margin-top: -20px;
+  }
+}

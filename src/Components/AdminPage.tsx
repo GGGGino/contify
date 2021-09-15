@@ -61,9 +61,9 @@ export default function AdminPage() {
   };
 
   const codesDoms = users.map((user: UserConfiguration, index) => {
-    return (<Col key={index} className="py-3" xs={12} md={4}>
+    return (<Col key={index} className="py-3 credit-card" xs={12} md={4}>
       <CreditCard
-        key={index}
+        nth={index}
         config={user}
         gradients={colorGenerator(index)}
         onEdit={() => openModalEditSlave(index)}
@@ -85,7 +85,7 @@ export default function AdminPage() {
 
   return <div>
     <InnerHeader/>
-    <Container className="py-3">
+    <Container className="py-3 cards-container">
       <Row>
         <Col sm={12}>
           <Row>

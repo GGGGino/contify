@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="position-relative overflow-hidden p-3 p-md-5 mb-3 text-center bg-light">
+      <div className="position-relative overflow-hidden p-3 p-md-5 mb-3 text-center main-image">
           <div className="my-3 py-3">
               <h1 className="display-1">Contify</h1>
               <p className="lead">
@@ -30,20 +30,20 @@ export default function Home() {
       <Container fluid>
         <Row className="gx-3">
           <Col md={6} lg={6} className="text-center">
-            <div className="bg-light px-3 py-5 position-relative">
+            <div className="organize-box px-3 py-5 position-relative">
               <h2 className="display-5"><Trans i18nKey="Home.checkerTitle" /></h2>
               <p className="lead"><Trans i18nKey="Home.checkerBody" /></p>
               <Link className="btn btn-outline-secondary stretched-link" to="/admin-page">
-                <Trans i18nKey="Home.goButton" />
+                <i className="bi bi-arrow-return-right" />
               </Link>
             </div>
           </Col>
           <Col md={6} lg={6} className="text-white text-center">
-            <div className="bg-dark px-3 py-5 position-relative">
+            <div className="settings-box px-3 py-5 position-relative">
               <h2 className="display-5"><Trans i18nKey="Home.userTitle" /></h2>
               <p className="lead"><Trans i18nKey="Home.userBody" /></p>
               <Link className="btn btn-outline-secondary stretched-link" to="/user-page">
-                <Trans i18nKey="Home.goButton" />
+                <i className="bi bi-arrow-return-right" />
               </Link>
             </div>
           </Col>

@@ -8,7 +8,7 @@
 }
 
 .card__part{
-  box-shadow: 1px 1px #aaa3a3;
+  box-shadow: 2px -1px #aaa3a3;
   top: 0;
   position: absolute;
   z-index: 1000;
@@ -65,7 +65,7 @@
 }
 
 .card_numer {
-  display: block;
+  display: inline-block;
   width: 100%;
   word-spacing: 4px;
   font-size: 20px;
@@ -143,13 +143,13 @@
   left: 15px;
 }
 
-/*.card:hover .card__front {
+.ccard.flipped .card__front {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
 
 }
 
-.card:hover .card__back {
+.ccard.flipped .card__back {
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
-}*/
+}
