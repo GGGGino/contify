@@ -34,12 +34,6 @@ export default function AdminPage() {
     setShowModal(false);
   };
 
-  const doCalculaton = () => {
-    const newUsersConf: UserConfiguration[] = utils.calculate(users);
-
-    setUsers(newUsersConf);
-  };
-
   const eraseSlaves = () => {
     setUsers([]);
     setOriginalUsers([]);
@@ -55,7 +49,10 @@ export default function AdminPage() {
     } else {
       originaUsers.push(jsonDecoded);
     }
-    setUsers([...originaUsers]);
+
+    const newUsersConf: UserConfiguration[] = utils.calculate(originaUsers);
+
+    setUsers(newUsersConf);
     setOriginalUsers([...originaUsers]);
     setSlaveToEdit(null);
   };
@@ -74,11 +71,12 @@ export default function AdminPage() {
   codesDoms.push(<Col key={'extra'} className="py-3" xs={12} md={4}>
     <Card>
       <Card.Header className={"card-header d-flex justify-content-between align-items-center"}>
-        <Card.Title>{'Aggiungi utente'}</Card.Title>
+        <Card.Title>{'Azioni'}</Card.Title>
       </Card.Header>
       <Card.Body>
         <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-upc-scan" /> Add</Button>{' '}
-        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-input-cursor"/> Add</Button>
+        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-input-cursor"/> Add</Button>{' '}
+        <Button variant="danger" size={'sm'} onClick={eraseSlaves}><i className="bi bi-input-cursor"/> Erase</Button>
       </Card.Body>
     </Card>
   </Col>);
@@ -91,12 +89,6 @@ export default function AdminPage() {
           <Row>
             {codesDoms}
           </Row>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12}>
-          <Button variant="success" size={'sm'} onClick={doCalculaton}>Calculate</Button>
-          <Button variant="danger" size={'sm'} onClick={eraseSlaves}>Erase</Button>
         </Col>
       </Row>
     </Container>
