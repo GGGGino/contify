@@ -11,7 +11,6 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('timer');
       setIndex((index + 1) % words.length);
     }, 2000);
     return () => clearTimeout(timer);

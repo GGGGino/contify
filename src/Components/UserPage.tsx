@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import InnerHeader from "./InnerHeader";
-import {Button, Col, Container, Form, Modal, Row} from "react-bootstrap";
+import {Col, Container, Modal, Row} from "react-bootstrap";
 import QRCode from "react-qr-code";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import ConfigForm from "./ConfigForm";
@@ -29,7 +29,7 @@ export default function UserPage() {
     : null;
 
   const handleGenerate = (event: UserConfiguration) => {
-    setInfo(event);
+    setInfo({...event});
     setShowModal(true);
   };
 
@@ -40,10 +40,12 @@ export default function UserPage() {
   return <div>
     <InnerHeader />
 
-    <Container className="py-3">
+    <Container>
       <Row>
         <Col>
-          <ConfigForm sendLabel={'Generate'} submitCallback={handleGenerate} />
+          <div className="formGrey">
+            <ConfigForm sendLabel={'Generate'} submitCallback={handleGenerate} />
+          </div>
         </Col>
       </Row>
     </Container>

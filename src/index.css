@@ -43,6 +43,13 @@ video {
   background-color: #d4c34a;
 }
 
+.formGrey {
+  background-color: rgb(221, 211, 211);
+  padding: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 @media (max-width: 767px) {
   .cards-container .credit-card+.credit-card:not(:last-child) {
     margin-top: -105px;

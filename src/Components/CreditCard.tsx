@@ -4,7 +4,6 @@ import {Button} from "react-bootstrap";
 import utils from "../utils";
 
 import '../creditCard.css';
-import {number} from "prop-types";
 
 interface CreditCardProps {
   config: UserConfiguration;
@@ -18,7 +17,6 @@ interface CreditCardProps {
 export default function CreditCard(props: CreditCardProps) {
   const gradients = props.gradients || utils.getColorCard(0);
   const alreadyPutted = props.config.alreadyPutted || 0;
-  const maxToPut = props.config.maxToPut === null ? '-' : (props.config.maxToPut / 100).toFixed(2);
   const diffToPut = props.config.alreadyPutted - props.config.toPut!;
   const toPutDom = props.config.toPut
     ? <>
