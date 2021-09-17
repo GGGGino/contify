@@ -6,23 +6,30 @@ import {UserConfiguration} from "../interfaces/UserConfiguration";
 import utils from '../utils';
 import CreditCard from "./CreditCard";
 import ShowAdSense from "./ShowAdSense";
+import ConfigForm from "./ConfigForm";
 
 const testInitialUserConfiguration: UserConfiguration[] = [];
+
+enum ModalState {
+  Closed = 0,
+  OpenScan = 1,
+  OpenForm = 2
+}
 
 export default function AdminPage() {
   const [originaUsers, setOriginalUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
   const [users, setUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
-  const [showModal, setShowModal] = useState(false);
+  const [modalState, setModalState] = useState<ModalState>(ModalState.Closed);
   const [slaveToEdit, setSlaveToEdit] = useState<number|null>(null);
   const colorGenerator = utils.colorCardGenerator();
 
   const openModalEditSlave = (indexToChange: number) => {
-    setShowModal(true);
+    setModalState(ModalState.OpenScan);
     setSlaveToEdit(indexToChange);
   };
 
-  const openModalAddSlave = () => {
-    setShowModal(true);
+  const openModal = (state: ModalState) => {
+    setModalState(state);
   };
 
   const removeSlave = (indexToRemove: number) => {
@@ -32,7 +39,7 @@ export default function AdminPage() {
   };
 
   const handleClose = () => {
-    setShowModal(false);
+    setModalState(ModalState.Closed);
   };
 
   const eraseSlaves = () => {
@@ -40,15 +47,11 @@ export default function AdminPage() {
     setOriginalUsers([]);
   };
 
-  const onQrcodeScanned = (qrCodeScanned: string) => {
-    handleClose();
-
-    const jsonDecoded: UserConfiguration = JSON.parse(atob(qrCodeScanned));
-
+  const addUserInfo = (userInfo: UserConfiguration) => {
     if (slaveToEdit !== null) {
-      originaUsers[slaveToEdit] = jsonDecoded;
+      originaUsers[slaveToEdit] = userInfo;
     } else {
-      originaUsers.push(jsonDecoded);
+      originaUsers.push(userInfo);
     }
 
     const newUsersConf: UserConfiguration[] = utils.calculate(originaUsers);
@@ -57,6 +60,26 @@ export default function AdminPage() {
     setOriginalUsers([...originaUsers]);
     setSlaveToEdit(null);
   };
+
+  const onUserAdded = (userInfo: UserConfiguration) => {
+    handleClose();
+
+    addUserInfo(userInfo);
+  };
+
+  const onQrcodeScanned = (qrCodeScanned: string) => {
+    handleClose();
+
+    const jsonDecoded: UserConfiguration = JSON.parse(atob(qrCodeScanned));
+
+    addUserInfo(jsonDecoded);
+  };
+
+  const modalBody = modalState !== ModalState.Closed
+    ? modalState === ModalState.OpenScan
+      ? <QrcodeScannerPlugin onQrcodeScanned={onQrcodeScanned} />
+      : <ConfigForm sendLabel={'Add'} submitCallback={onUserAdded} />
+    : null;
 
   const codesDoms = users.map((user: UserConfiguration, index) => {
     return (<Col key={index} className="py-3 credit-card" xs={12} md={4}>
@@ -73,8 +96,8 @@ export default function AdminPage() {
       <Row>
         <Col xs={6}>
           <DropdownButton title="Add">
-            <Dropdown.Item onClick={openModalAddSlave}><i className="bi bi-upc-scan" /> Scan</Dropdown.Item>
-            <Dropdown.Item onClick={openModalAddSlave}><i className="bi bi-input-cursor"/> Add info</Dropdown.Item>
+            <Dropdown.Item onClick={() => {openModal(ModalState.OpenScan);}}><i className="bi bi-upc-scan" /> Scan</Dropdown.Item>
+            <Dropdown.Item onClick={() => {openModal(ModalState.OpenForm);}}><i className="bi bi-input-cursor"/> Add info</Dropdown.Item>
           </DropdownButton>
         </Col>
         <Col xs={6}>
@@ -96,12 +119,12 @@ export default function AdminPage() {
       {buttonsDom}
     </Container>
 
-    <Modal show={showModal} onHide={handleClose}>
+    <Modal show={modalState !== ModalState.Closed} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Scan code</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <QrcodeScannerPlugin onQrcodeScanned={onQrcodeScanned} />
+        {modalBody}
       </Modal.Body>
     </Modal>
   </div>;
