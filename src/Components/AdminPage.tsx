@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
+import {Button, Col, Container, Dropdown, DropdownButton, Modal, Row} from "react-bootstrap";
 import InnerHeader from "./InnerHeader";
 import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import utils from '../utils';
 import CreditCard from "./CreditCard";
-import {Adsense as AdSense} from "@ctrl/react-adsense";
+import ShowAdSense from "./ShowAdSense";
 
 const testInitialUserConfiguration: UserConfiguration[] = [];
 
@@ -69,27 +69,22 @@ export default function AdminPage() {
     </Col>);
   });
 
-  codesDoms.push(<Col key={'extra'} className="py-3" xs={12} md={4}>
-    <Card>
-      <Card.Header className={"card-header d-flex justify-content-between align-items-center"}>
-        <Card.Title>{'Azioni'}</Card.Title>
-      </Card.Header>
-      <Card.Body>
-        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-upc-scan" /> Add</Button>{' '}
-        <Button variant="secondary" size={'sm'} onClick={openModalAddSlave}><i className="bi bi-input-cursor"/> Add</Button>{' '}
-        <Button variant="danger" size={'sm'} onClick={eraseSlaves}><i className="bi bi-input-cursor"/> Erase</Button>
-      </Card.Body>
-    </Card>
-  </Col>);
+  const buttonsDom = (
+      <Row>
+        <Col xs={6}>
+          <DropdownButton title="Add">
+            <Dropdown.Item onClick={openModalAddSlave}><i className="bi bi-upc-scan" /> Scan</Dropdown.Item>
+            <Dropdown.Item onClick={openModalAddSlave}><i className="bi bi-input-cursor"/> Add info</Dropdown.Item>
+          </DropdownButton>
+        </Col>
+        <Col xs={6}>
+          <Button variant="danger" onClick={eraseSlaves} className="d-block w-100"><i className="bi bi-trash"/> Erase</Button>
+        </Col>
+      </Row>);
 
   return <div>
     <InnerHeader/>
-    <AdSense
-      client='ca-pub-5437738883571201'
-      slot='2740252059'
-      style={{ display: 'block', height: '90px' }}
-      format='horizontal'
-      responsive='true'/>
+    <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
     <Container className="py-3 cards-container">
       <Row>
         <Col sm={12}>
@@ -98,6 +93,7 @@ export default function AdminPage() {
           </Row>
         </Col>
       </Row>
+      {buttonsDom}
     </Container>
 
     <Modal show={showModal} onHide={handleClose}>

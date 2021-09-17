@@ -50,8 +50,13 @@ video {
   border-bottom-right-radius: 20px;
 }
 
+.dropdown-toggle,
+.dropdown-menu {
+  width: 100%;
+}
+
 @media (max-width: 767px) {
-  .cards-container .credit-card+.credit-card:not(:last-child) {
+  .cards-container .credit-card+.credit-card {
     margin-top: -105px;
     transition: all .5s;
   }

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {Adsense as AdSense} from '@ctrl/react-adsense';
 import {Trans, useTranslation} from 'react-i18next';
 import {Col, Container, Row} from "react-bootstrap";
+import ShowAdSense from "./ShowAdSense";
 
 export default function Home() {
   const [index, setIndex] = useState<number>(0);
@@ -30,31 +30,24 @@ export default function Home() {
       <Container fluid>
         <Row>
           <Col>
-            <AdSense
-              client='ca-pub-5437738883571201'
-              slot='2740252059'
-              style={{ display: 'block', height: '90px' }}
-              format='horizontal'
-              responsive='true' />
+            <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
           </Col>
         </Row>
         <Row className="gx-3">
-          <Col md={6} lg={6} className="text-center">
+          <Col md={6} lg={6} className="text-center pb-3">
             <div className="organize-box px-3 py-5 position-relative">
-              <h2 className="display-5"><Trans i18nKey="Home.checkerTitle" /></h2>
-              <p className="lead"><Trans i18nKey="Home.checkerBody" /></p>
-              <Link className="btn btn-outline-secondary stretched-link" to="/admin-page">
-                <i className="bi bi-arrow-return-right" />
+              <Link className="text-reset text-decoration-none stretched-link" to="/admin-page">
+                <h2 className="display-5"><Trans i18nKey="Home.checkerTitle" /></h2>
               </Link>
+              <p className="lead"><Trans i18nKey="Home.checkerBody" /></p>
             </div>
           </Col>
-          <Col md={6} lg={6} className="text-white text-center">
+          <Col md={6} lg={6} className="text-white text-center pb-3">
             <div className="settings-box px-3 py-5 position-relative">
-              <h2 className="display-5"><Trans i18nKey="Home.userTitle" /></h2>
-              <p className="lead"><Trans i18nKey="Home.userBody" /></p>
-              <Link className="btn btn-outline-secondary stretched-link" to="/user-page">
-                <i className="bi bi-arrow-return-right" />
+              <Link className="text-reset text-decoration-none stretched-link" to="/user-page">
+                <h2 className="display-5"><Trans i18nKey="Home.userTitle" /></h2>
               </Link>
+              <p className="lead"><Trans i18nKey="Home.userBody" /></p>
             </div>
           </Col>
         </Row>

@@ -4,7 +4,7 @@ import {Col, Container, Modal, Row} from "react-bootstrap";
 import QRCode from "react-qr-code";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import ConfigForm from "./ConfigForm";
-import {Adsense as AdSense} from "@ctrl/react-adsense";
+import ShowAdSense from "./ShowAdSense";
 
 export default function UserPage() {
   // textInput must be declared here so the ref can refer to it
@@ -51,12 +51,7 @@ export default function UserPage() {
       </Row>
       <Row>
         <Col>
-          <AdSense
-            client='ca-pub-5437738883571201'
-            slot='2740252059'
-            style={{ display: 'block', height: '90px' }}
-            format='horizontal'
-            responsive='true' />
+          <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
         </Col>
       </Row>
     </Container>
