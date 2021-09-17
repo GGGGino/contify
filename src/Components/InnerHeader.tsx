@@ -5,7 +5,7 @@ import money from '../money.png';
 export default function InnerHeader() {
   return <Navbar expand="lg">
     <Container>
-      <Navbar.Brand href="/">
+      <Navbar.Brand href={'/' + process.env.REACT_APP_BASE_FOLDER}>
         <img
           src={money}
           width="55"

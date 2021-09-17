@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {Adsense as AdSense} from '@ctrl/react-adsense';
 import {Trans, useTranslation} from 'react-i18next';
 import {Col, Container, Row} from "react-bootstrap";
 
@@ -27,6 +28,16 @@ export default function Home() {
           </div>
       </div>
       <Container fluid>
+        <Row>
+          <Col>
+            <AdSense
+              client='ca-pub-5437738883571201'
+              slot='2740252059'
+              style={{ display: 'block', height: '90px' }}
+              format='horizontal'
+              responsive='true' />
+          </Col>
+        </Row>
         <Row className="gx-3">
           <Col md={6} lg={6} className="text-center">
             <div className="organize-box px-3 py-5 position-relative">

@@ -5,6 +5,7 @@ import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import utils from '../utils';
 import CreditCard from "./CreditCard";
+import {Adsense as AdSense} from "@ctrl/react-adsense";
 
 const testInitialUserConfiguration: UserConfiguration[] = [];
 
@@ -83,6 +84,12 @@ export default function AdminPage() {
 
   return <div>
     <InnerHeader/>
+    <AdSense
+      client='ca-pub-5437738883571201'
+      slot='2740252059'
+      style={{ display: 'block', height: '90px' }}
+      format='horizontal'
+      responsive='true'/>
     <Container className="py-3 cards-container">
       <Row>
         <Col sm={12}>
