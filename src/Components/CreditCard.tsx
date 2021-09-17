@@ -1,13 +1,14 @@
 import React from "react";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
-import {Button} from "react-bootstrap";
+import {Button, Dropdown} from "react-bootstrap";
 import utils from "../utils";
 
 import '../creditCard.css';
+import {ModalState} from "../utils/enums";
 
 interface CreditCardProps {
   config: UserConfiguration;
-  onEdit: () => any;
+  onEdit: (state: ModalState) => any;
   onDelete: () => any;
   className?: string;
   gradients?: string[];
@@ -48,7 +49,15 @@ export default function CreditCard(props: CreditCardProps) {
         <div className="card__space-60">
           <span className="card__label">Actions</span>
           <p className="card__info">
-            <Button variant="secondary" size={'sm'} onClick={props.onEdit}><i className="bi bi-upc-scan" /></Button>{' '}
+            <Dropdown className="d-inline-block">
+              <Dropdown.Toggle variant="secondary" size={'sm'}>
+                <i className="bi bi-pencil-square" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => { props.onEdit(ModalState.OpenScan) }}><i className="bi bi-upc-scan" /> Scan</Dropdown.Item>
+                <Dropdown.Item onClick={() => { props.onEdit(ModalState.OpenForm) }}><i className="bi bi-input-cursor"/> Manual</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <Button variant="danger" size={'sm'} onClick={props.onDelete}><i className="bi bi-trash" /></Button>
           </p>
         </div>

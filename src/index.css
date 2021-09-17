@@ -50,8 +50,8 @@ video {
   border-bottom-right-radius: 20px;
 }
 
-.dropdown-toggle,
-.dropdown-menu {
+.dropdown-100 .dropdown-toggle,
+.dropdown-100 .dropdown-menu {
   width: 100%;
 }
 

@@ -3,12 +3,12 @@ import {Button, Form} from "react-bootstrap";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import {ConfigFormProps} from "../interfaces/ConfigFormProps";
 
-export default function ConfigForm(props: ConfigFormProps) {
-  const [myInfoScope, setInfo]: [any, any] = useState<UserConfiguration>({
-    name: '',
-    alreadyPutted: 0,
-    maxToPut: null
-  });
+export default function ConfigForm({
+  initialValues = {name: '', alreadyPutted: 0, maxToPut: null},
+  sendLabel,
+  submitCallback
+}: ConfigFormProps) {
+  const [myInfoScope, setInfo]: [any, any] = useState<UserConfiguration>(initialValues);
 
   const handleInputChange = (event: any) => {
     const target = event.target;
@@ -25,7 +25,7 @@ export default function ConfigForm(props: ConfigFormProps) {
   };
 
   const handleGenerate = (event: any) => {
-    props.submitCallback(myInfoScope);
+    submitCallback(myInfoScope);
   };
 
   return (<Form>
@@ -48,7 +48,7 @@ export default function ConfigForm(props: ConfigFormProps) {
     </Form.Group>
 
     <Button variant="primary" onClick={handleGenerate}>
-      {props.sendLabel}
+      {sendLabel}
     </Button>
   </Form>);
 }

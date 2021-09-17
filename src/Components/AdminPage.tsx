@@ -4,17 +4,12 @@ import InnerHeader from "./InnerHeader";
 import {QrcodeScannerPlugin} from "./QrcodeScannerPlugin";
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 import utils from '../utils';
+import {ModalState} from "../utils/enums";
 import CreditCard from "./CreditCard";
 import ShowAdSense from "./ShowAdSense";
 import ConfigForm from "./ConfigForm";
 
 const testInitialUserConfiguration: UserConfiguration[] = [];
-
-enum ModalState {
-  Closed = 0,
-  OpenScan = 1,
-  OpenForm = 2
-}
 
 export default function AdminPage() {
   const [originaUsers, setOriginalUsers] = useState<Array<UserConfiguration>>(testInitialUserConfiguration);
@@ -23,8 +18,8 @@ export default function AdminPage() {
   const [slaveToEdit, setSlaveToEdit] = useState<number|null>(null);
   const colorGenerator = utils.colorCardGenerator();
 
-  const openModalEditSlave = (indexToChange: number) => {
-    setModalState(ModalState.OpenScan);
+  const openModalEditSlave = (indexToChange: number, state: ModalState) => {
+    setModalState(state);
     setSlaveToEdit(indexToChange);
   };
 
@@ -87,7 +82,7 @@ export default function AdminPage() {
         nth={index}
         config={user}
         gradients={colorGenerator(index)}
-        onEdit={() => openModalEditSlave(index)}
+        onEdit={(state: ModalState) => openModalEditSlave(index, state)}
         onDelete={() => removeSlave(index)} />
     </Col>);
   });
@@ -95,9 +90,9 @@ export default function AdminPage() {
   const buttonsDom = (
       <Row>
         <Col xs={6}>
-          <DropdownButton title="Add">
+          <DropdownButton title="Add" className="dropdown-100">
             <Dropdown.Item onClick={() => {openModal(ModalState.OpenScan);}}><i className="bi bi-upc-scan" /> Scan</Dropdown.Item>
-            <Dropdown.Item onClick={() => {openModal(ModalState.OpenForm);}}><i className="bi bi-input-cursor"/> Add info</Dropdown.Item>
+            <Dropdown.Item onClick={() => {openModal(ModalState.OpenForm);}}><i className="bi bi-input-cursor"/> Manual</Dropdown.Item>
           </DropdownButton>
         </Col>
         <Col xs={6}>
