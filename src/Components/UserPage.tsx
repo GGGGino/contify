@@ -11,8 +11,7 @@ export default function UserPage() {
   const qrCodeDom = useRef(null);
   const [myInfoScope, setInfo]: [any, any] = useState<UserConfiguration>({
     name: '',
-    alreadyPutted: 0,
-    maxToPut: null
+    alreadyPutted: 0
   });
   const [showModal, setShowModal] = useState(false);
 

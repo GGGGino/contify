@@ -35,6 +35,7 @@ export default function AdminPage() {
 
   const handleClose = () => {
     setModalState(ModalState.Closed);
+    setSlaveToEdit(null);
   };
 
   const eraseSlaves = () => {
@@ -73,7 +74,7 @@ export default function AdminPage() {
   const modalBody = modalState !== ModalState.Closed
     ? modalState === ModalState.OpenScan
       ? <QrcodeScannerPlugin onQrcodeScanned={onQrcodeScanned} />
-      : <ConfigForm sendLabel={'Add'} submitCallback={onUserAdded} />
+      : <ConfigForm sendLabel={'Add'} submitCallback={onUserAdded} initialValues={slaveToEdit !== null ? originaUsers[slaveToEdit] : undefined} />
     : null;
 
   const codesDoms = users.map((user: UserConfiguration, index) => {
@@ -104,6 +105,7 @@ export default function AdminPage() {
     <InnerHeader/>
     <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
     <Container className="py-3 cards-container">
+      {buttonsDom}
       <Row>
         <Col sm={12}>
           <Row>
@@ -111,13 +113,9 @@ export default function AdminPage() {
           </Row>
         </Col>
       </Row>
-      {buttonsDom}
     </Container>
 
     <Modal show={modalState !== ModalState.Closed} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Scan code</Modal.Title>
-      </Modal.Header>
       <Modal.Body>
         {modalBody}
       </Modal.Body>

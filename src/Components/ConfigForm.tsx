@@ -4,7 +4,7 @@ import {UserConfiguration} from "../interfaces/UserConfiguration";
 import {ConfigFormProps} from "../interfaces/ConfigFormProps";
 
 export default function ConfigForm({
-  initialValues = {name: '', alreadyPutted: 0, maxToPut: null},
+  initialValues = {name: '', alreadyPutted: 0},
   sendLabel,
   submitCallback
 }: ConfigFormProps) {
@@ -31,7 +31,7 @@ export default function ConfigForm({
   return (<Form>
     <Form.Group className="mb-3" controlId="name">
       <Form.Label>Name</Form.Label>
-      <Form.Control type="text" placeholder="Name" onChange={handleInputChange} />
+      <Form.Control type="text" placeholder="Name" defaultValue={myInfoScope.name} onChange={handleInputChange} />
       <Form.Text className="text-muted">
         Set your name
       </Form.Text>
@@ -39,12 +39,12 @@ export default function ConfigForm({
 
     <Form.Group className="mb-3" controlId="alreadyPutted">
       <Form.Label>Already putted</Form.Label>
-      <Form.Control type="number" placeholder="0" onChange={handleNumberChange}/>
+      <Form.Control type="number" placeholder="0" defaultValue={myInfoScope.alreadyPutted} onChange={handleNumberChange}/>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="maxToPut">
       <Form.Label>Max import</Form.Label>
-      <Form.Control type="number" placeholder="0" onChange={handleNumberChange}/>
+      <Form.Control type="number" placeholder="0" defaultValue={myInfoScope.maxToPut} onChange={handleNumberChange}/>
     </Form.Group>
 
     <Button variant="primary" onClick={handleGenerate}>

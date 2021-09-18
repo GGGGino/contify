@@ -1,6 +1,6 @@
 export interface UserConfiguration {
   name: string;
   alreadyPutted: number;
-  maxToPut: number|null;
+  maxToPut?: number;
   toPut?: number;
 }
