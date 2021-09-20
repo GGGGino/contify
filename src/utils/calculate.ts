@@ -1,11 +1,18 @@
 import {UserConfiguration} from "../interfaces/UserConfiguration";
 
+/**
+ * Add some number to the property *toPut*, if is not present initialize to 0;
+ */
 function addToPut(userConf: UserConfiguration, toPut: number) {
   if (!userConf.toPut) { userConf.toPut = 0; }
 
   userConf.toPut += toPut;
 }
 
+/**
+ * Main function. The core of the app.
+ * Passed the users configrations, this resolve the temporary total in the toPut property
+ */
 export default function calculate(usersConfiguration: UserConfiguration[]) {
   const newUserConf: UserConfiguration[] = [...usersConfiguration];
   newUserConf.map((userConf) => {

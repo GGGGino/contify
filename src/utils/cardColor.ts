@@ -1,3 +1,6 @@
+/**
+ * Matrix of available colors, useful to fill the credit card
+ */
 const availableColors: string[][] = [
   ['#fd696b', '#fa616e', '#f65871', '#f15075'],
   ['#4b8512', '#1d960e', '#1fb52d', '#006902'],
@@ -10,10 +13,16 @@ const availableColors: string[][] = [
   ['#fd696b', '#fa616e', '#f65871', '#f15075']
 ];
 
+/**
+ * Utils if you iterate an array, you can call this function directly with the index of the item
+ */
 export function colorCardGenerator(): (value: number) => string[] {
-  return (value: number) => availableColors[value % availableColors.length];
+  return (value: number) => getColorCard(value % availableColors.length);
 }
 
+/**
+ * Get the row of the availableColor matrix
+ */
 export function getColorCard(index: number): string[] {
   return availableColors[index];
 }
