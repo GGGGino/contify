@@ -36,12 +36,11 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [index, words.length]);
 
-
   return (
     <>
       <div className="position-relative overflow-hidden p-3 p-md-5 mb-3 text-center main-image">
           <div className="my-3 py-3">
-              <h1 className="display-1">Contify</h1>
+              <h1 className="display-1">Splittami</h1>
               <p className="lead">
                 <Trans i18nKey="Home.slogan" /> {words[index]}
               </p>

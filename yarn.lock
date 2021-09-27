@@ -9520,6 +9520,11 @@ react-transition-group@^4.4.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-typist-loop@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-typist-loop/-/react-typist-loop-1.0.0.tgz#bf6829d45d272cd523e35058a44bacf454167227"
+  integrity sha512-SOlWQQmWM8NtrEHpU7Zo2psWTqrviRqNlyE44ptGAtdPKIhZraeCudIcPOYZ712ZScXVxPb37JHK2hEKzjAXtw==
+
 react-typist@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-typist/-/react-typist-2.0.5.tgz#9830395a73a03e6368e1392ecb98edaa3a648e44"
