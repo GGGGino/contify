@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="position-relative overflow-hidden p-3 p-md-5 mb-3 text-center main-image">
+      <div className="position-relative overflow-hidden p-md-5 mb-3 text-center main-image">
           <div className="my-3 py-3">
               <h1 className="display-1">Splittami</h1>
               <p className="lead">
@@ -49,7 +49,7 @@ export default function Home() {
       <Container fluid>
         <Row>
           <Col>
-            <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
+            <ShowAdSense show={false} />
           </Col>
         </Row>
         {mainBoxes}

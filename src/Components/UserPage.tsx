@@ -50,7 +50,7 @@ export default function UserPage() {
       </Row>
       <Row>
         <Col>
-          <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
+          <ShowAdSense show={false} />
         </Col>
       </Row>
     </Container>

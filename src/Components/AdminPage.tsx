@@ -103,7 +103,7 @@ export default function AdminPage() {
 
   return <div>
     <InnerHeader/>
-    <ShowAdSense show={process.env.NODE_ENV !== 'development'} />
+    <ShowAdSense show={false} />
     <Container className="py-3 cards-container">
       {buttonsDom}
       <Row>
