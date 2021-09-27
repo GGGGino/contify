@@ -19,3 +19,54 @@ code {
 video {
   max-width: 100%;
 }
+
+.navbar {
+  background-color: rgb(221, 211, 211);
+}
+
+.main-image {
+  background: url(./money.png) no-repeat center left rgb(221, 211, 211);
+  background-size: contain;
+  padding: 1rem;
+}
+
+.organize-box {
+  background-color: #78c178;
+}
+.organize-box:hover {
+  background-color: #78d178;
+}
+
+.settings-box {
+  background-color: #d4b34a;
+}
+.settings-box:hover {
+  background-color: #d4c34a;
+}
+
+.formGrey {
+  background-color: rgb(221, 211, 211);
+  padding: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.dropdown-100 .dropdown-toggle,
+.dropdown-100 .dropdown-menu {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .cards-container .credit-card+.credit-card {
+    margin-top: -105px;
+    transition: all .5s;
+  }
+  .cards-container .credit-card:hover + .credit-card {
+    margin-top: -20px;
+  }
+  .main-image {
+    background: url(./money.png) no-repeat top left rgb(221, 211, 211);
+    background-size: 50%;
+    padding-top: 100px;
+  }
+}
