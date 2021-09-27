@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={'/' + process.env.REACT_APP_BASE_FOLDER}>
       <main>
         <Switch>
           <Route path="/user-page">
