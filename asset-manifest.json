@@ -1,28 +1,28 @@
 {
   "files": {
     "main.css": "/contify/static/css/main.4d190318.chunk.css",
-    "main.js": "/contify/static/js/main.4b3939b8.chunk.js",
-    "main.js.map": "/contify/static/js/main.4b3939b8.chunk.js.map",
-    "runtime-main.js": "/contify/static/js/runtime-main.e003198c.js",
-    "runtime-main.js.map": "/contify/static/js/runtime-main.e003198c.js.map",
+    "main.js": "/contify/static/js/main.6e090e74.chunk.js",
+    "main.js.map": "/contify/static/js/main.6e090e74.chunk.js.map",
+    "runtime-main.js": "/contify/static/js/runtime-main.0eeee5e7.js",
+    "runtime-main.js.map": "/contify/static/js/runtime-main.0eeee5e7.js.map",
     "static/css/2.0aad24e8.chunk.css": "/contify/static/css/2.0aad24e8.chunk.css",
-    "static/js/2.2b63aefc.chunk.js": "/contify/static/js/2.2b63aefc.chunk.js",
-    "static/js/2.2b63aefc.chunk.js.map": "/contify/static/js/2.2b63aefc.chunk.js.map",
-    "static/js/3.a87c59ac.chunk.js": "/contify/static/js/3.a87c59ac.chunk.js",
-    "static/js/3.a87c59ac.chunk.js.map": "/contify/static/js/3.a87c59ac.chunk.js.map",
+    "static/js/2.3923fda2.chunk.js": "/contify/static/js/2.3923fda2.chunk.js",
+    "static/js/2.3923fda2.chunk.js.map": "/contify/static/js/2.3923fda2.chunk.js.map",
+    "static/js/3.a81dfcdd.chunk.js": "/contify/static/js/3.a81dfcdd.chunk.js",
+    "static/js/3.a81dfcdd.chunk.js.map": "/contify/static/js/3.a81dfcdd.chunk.js.map",
     "index.html": "/contify/index.html",
     "static/css/2.0aad24e8.chunk.css.map": "/contify/static/css/2.0aad24e8.chunk.css.map",
     "static/css/main.4d190318.chunk.css.map": "/contify/static/css/main.4d190318.chunk.css.map",
-    "static/js/2.2b63aefc.chunk.js.LICENSE.txt": "/contify/static/js/2.2b63aefc.chunk.js.LICENSE.txt",
+    "static/js/2.3923fda2.chunk.js.LICENSE.txt": "/contify/static/js/2.3923fda2.chunk.js.LICENSE.txt",
     "static/media/bootstrap-icons.css": "/contify/static/media/bootstrap-icons.dfd0ea12.woff2",
     "static/media/index.css": "/contify/static/media/money.863bbeee.png",
     "static/media/slick-theme.css": "/contify/static/media/slick.c94f7671.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.e003198c.js",
+    "static/js/runtime-main.0eeee5e7.js",
     "static/css/2.0aad24e8.chunk.css",
-    "static/js/2.2b63aefc.chunk.js",
+    "static/js/2.3923fda2.chunk.js",
     "static/css/main.4d190318.chunk.css",
-    "static/js/main.4b3939b8.chunk.js"
+    "static/js/main.6e090e74.chunk.js"
   ]
 }
