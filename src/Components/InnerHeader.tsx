@@ -12,7 +12,7 @@ export default function InnerHeader() {
           className="d-inline-block align-top"
           alt="React Bootstrap logo"
         />
-        Contify
+        Splittami
         </Navbar.Brand>
     </Container>
   </Navbar>;
