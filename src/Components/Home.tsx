@@ -1,8 +1,10 @@
 import React, {useEffect, useMemo, useState} from "react";
 import {Link} from "react-router-dom";
 import {Trans, useTranslation} from 'react-i18next';
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Navbar, Row} from "react-bootstrap";
 import ShowAdSense from "./ShowAdSense";
+import money from "../money.png";
+import InnerHeader from "./InnerHeader";
 
 export default function Home() {
   const [index, setIndex] = useState<number>(0);
@@ -38,14 +40,19 @@ export default function Home() {
 
   return (
     <>
-      <div className="position-relative overflow-hidden p-md-5 mb-3 text-center main-image">
-          <div className="my-3 py-3">
+      <InnerHeader />
+      <Container fluid className="p-md-5 mb-3 text-center main-image align-middle">
+        <Row>
+          <Col className="d-flex align-items-center justify-content-center">
+            <div>
               <h1 className="display-1">Splittami</h1>
               <p className="lead">
-                <Trans i18nKey="Home.slogan" /> {words[index]}
+                <Trans i18nKey="Home.slogan" /> <span className="text-success">{words[index]}</span>
               </p>
-          </div>
-      </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
       <Container fluid>
         <Row>
           <Col>

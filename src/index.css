@@ -25,7 +25,7 @@ video {
 }
 
 .main-image {
-  background: url(./money.png) no-repeat center left rgb(221, 211, 211);
+  background: rgb(221, 211, 211);
   background-size: contain;
   padding: 1rem;
 }
@@ -63,10 +63,5 @@ video {
   }
   .cards-container .credit-card:hover + .credit-card {
     margin-top: -20px;
-  }
-  .main-image {
-    background: url(./money.png) no-repeat top left rgb(221, 211, 211);
-    background-size: 50%;
-    padding-top: 100px;
   }
 }
