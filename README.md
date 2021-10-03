@@ -1,5 +1,7 @@
 # Splittami
 
+> https://ggggino.github.io/splittami
+
 Web app that aim to split the the cost of lunch, dinner, trip, event, etc..
 
 The need of this app happen at the end of a dinner, everyone put different amount of money.
