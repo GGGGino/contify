@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {HashRouter, Route, Switch} from "react-router-dom";
 import Home from "./Home";
 import AdminPage from "./AdminPage";
 import UserPage from "./UserPage";
@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function App() {
   return (
-    <Router basename={'/' + process.env.REACT_APP_BASE_FOLDER}>
+    <HashRouter basename={'/' + process.env.REACT_APP_BASE_FOLDER}>
       <main>
         <Switch>
           <Route path="/user-page">
@@ -26,6 +26,6 @@ export default function App() {
           </Route>
         </Switch>
       </main>
-    </Router>
+    </HashRouter>
   );
 }
