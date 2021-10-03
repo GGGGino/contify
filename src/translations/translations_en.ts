@@ -1,7 +1,7 @@
 const translation = {
   translation: {
     Home: {
-      "slogan": "Share with others the cost of your",
+      "slogan": "Split with others the cost of your",
       "checkerTitle": "Checker",
       "checkerBody": "Handle the process of organizing the users and the prize they have to put in.",
       "userTitle": "User",

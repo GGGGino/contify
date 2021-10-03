@@ -1,7 +1,7 @@
 const translation = {
   translation: {
     Home: {
-      "slogan": "Condividi con altri il prezzo di",
+      "slogan": "Dividi con altri il prezzo di",
       "checkerTitle": "Organizzatore",
       "checkerBody": "Gestisci gli utenti ed le loro configurazioni",
       "userTitle": "Utente",
